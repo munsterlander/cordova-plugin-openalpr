@@ -149,6 +149,7 @@ public class OpenALPR extends CordovaPlugin {
     private Alpr initAlpr(JSONObject options, CallbackContext callbackContext) {
         String country = "";
         Integer amount = 0;
+        Boolean region = False;
 
         //Try to read options object.
         try {
@@ -169,7 +170,8 @@ public class OpenALPR extends CordovaPlugin {
 
         Alpr alpr = new Alpr(country, conf_file, runtime_dir); //Make new ALPR object with country EU and the config files from assets.
         alpr.setTopN(amount);
-
+        alpr.setDetectRegion(region);
+        
         return alpr;
     }
 
