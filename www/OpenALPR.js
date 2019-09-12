@@ -2,6 +2,7 @@
 
 var DEFAULT_COUNTRY = 'us';
 var DEFAULT_AMOUNT = 1;
+var DEFAULT_REGION = false;
 
 var exec = require('cordova/exec');
 
@@ -38,7 +39,8 @@ function validateOptions(options) {
 	if(! options || ! typeof options === 'object') {
 		return {
 			country: DEFAULT_COUNTRY,
-			amount: DEFAULT_AMOUNT
+			amount: DEFAULT_AMOUNT,
+			region: DEFAULT_REGION
 		}
 	}
 
@@ -50,6 +52,11 @@ function validateOptions(options) {
 	//Check if amount property is set.
 	if (! options.hasOwnProperty('amount')) {
 		options.amount = DEFAULT_AMOUNT;
+	}
+	
+	//Check if detectRegion property is set.
+	if (! options.hasOwnProperty('region')) {
+		options.region = DEFAULT_REGION;
 	}
 
 	return options;
