@@ -185,8 +185,10 @@ public class OpenALPR extends CordovaPlugin {
         for (AlprPlateResult result : results.getPlates()) {
             for (AlprPlate plate : result.getTopNPlates()) {
                 JSONObject obj = new JSONObject();
-                obj.put("number", plate.getCharacters());
+                obj.put("plate", plate.getCharacters());
                 obj.put("confidence", plate.getOverallConfidence());
+                obj.put("region", result.getRegion());
+                obj.put("regionConfidence", result.getRegionConfidence());
                 array.put(obj);
             }
         }
