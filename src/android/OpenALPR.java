@@ -149,12 +149,13 @@ public class OpenALPR extends CordovaPlugin {
     private Alpr initAlpr(JSONObject options, CallbackContext callbackContext) {
         String country = "";
         Integer amount = 0;
-        Boolean region = False;
+        Boolean region = false;
 
         //Try to read options object.
         try {
             country = options.getString("country");
             amount = options.getInt("amount");
+            region = options.getBoolean("region");
         } catch (JSONException e) {
             returnError("Error while reading options: " + e.getMessage(), callbackContext);
         }
