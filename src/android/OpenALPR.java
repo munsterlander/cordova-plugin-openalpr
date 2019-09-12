@@ -149,13 +149,15 @@ public class OpenALPR extends CordovaPlugin {
     private Alpr initAlpr(JSONObject options, CallbackContext callbackContext) {
         String country = "";
         Integer amount = 0;
-        Boolean region = false;
+        Boolean detectRegion = false;
+        String defaultRegion = "";
 
         //Try to read options object.
         try {
             country = options.getString("country");
             amount = options.getInt("amount");
-            region = options.getBoolean("region");
+            detectRegion = options.getBoolean("detectRegion");
+            defaultRegion = options.getString("defaultRegion");
         } catch (JSONException e) {
             returnError("Error while reading options: " + e.getMessage(), callbackContext);
         }
@@ -171,7 +173,8 @@ public class OpenALPR extends CordovaPlugin {
 
         Alpr alpr = new Alpr(country, conf_file, runtime_dir); //Make new ALPR object with country EU and the config files from assets.
         alpr.setTopN(amount);
-        alpr.setDetectRegion(region);
+        alpr.setDetectRegion(detectRegion);
+        alpr.setDefaultRegion(defaultRegion);
         
         return alpr;
     }
@@ -190,6 +193,7 @@ public class OpenALPR extends CordovaPlugin {
                 JSONObject obj = new JSONObject();
                 obj.put("plate", plate.getCharacters());
                 obj.put("confidence", plate.getOverallConfidence());
+                obj.put("matchesTemplate", plate.isMatchesTemplate());
                 obj.put("region", result.getRegion());
                 obj.put("regionConfidence", result.getRegionConfidence());
                 array.put(obj);
