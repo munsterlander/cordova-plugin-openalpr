@@ -1,7 +1,7 @@
 'use strict';
 
-var DEFAULT_COUNTRY = 'eu';
-var DEFAULT_AMOUNT = 3;
+var DEFAULT_COUNTRY = 'us';
+var DEFAULT_AMOUNT = 1;
 
 var exec = require('cordova/exec');
 
