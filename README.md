@@ -1,3 +1,5 @@
+This is a fork that has been optimized for single plate reading in the USA.  As OpenALPR FOSS version is dead - thanks Rikor - this is the last version of their engine with some tweaks.
+
 # Cordova OpenALPR plugin
 This Cordova plugin adds support for the [OpenALPR (Automatic License Plate Recognition) library](https://github.com/openalpr/openalpr) which provides support for retrieving the license plate from a picture. You can pass an image using Base64 or the file path to the OpenALPR plugin.
 
